@@ -284,7 +284,7 @@ def install_worker_int_handler(worker):
             install_worker_int_again_handler(worker)
             print("celeryd: Warm shutdown (%s)" % (process_name, ))
             worker.stop(in_sighandler=True)
-        raise SystemExit()
+        #raise SystemExit()
 
     platforms.signals["SIGINT"] = _stop
 
@@ -296,7 +296,7 @@ def install_worker_int_again_handler(worker):
         if not process_name or process_name == "MainProcess":
             print("celeryd: Cold shutdown (%s)" % (process_name, ))
             worker.terminate(in_sighandler=True)
-        raise SystemTerminate()
+        #raise SystemTerminate()
 
     platforms.signals["SIGINT"] = _stop
 

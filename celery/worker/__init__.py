@@ -4,6 +4,7 @@ import logging
 import socket
 import sys
 import traceback
+import sys
 
 from kombu.syn import blocking
 from kombu.utils.finalize import Finalize
@@ -259,11 +260,11 @@ class WorkController(object):
             raise
         except:
             self.stop()
-            try:
-                raise
-            except TypeError:
-                # eventlet borks here saying that the exception is None(?)
-                sys.exit()
+            #try:
+            #    raise
+            #except TypeError:
+            #    # eventlet borks here saying that the exception is None(?)
+            #    sys.exit()
 
     def process_task(self, request):
         """Process task by sending it to the pool of workers."""
